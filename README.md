@@ -66,20 +66,6 @@ Votes are summed. Score ≥ 2 → long. Score ≤ −2 → short. Otherwise flat
 
 ---
 
-## Bugs Fixed from Original QuantInsti Code
-
-| # | Bug | Impact | Fix |
-|---|---|---|---|
-| FIX-1 | HMM Viterbi uses future data to label regime at time t | High | Replaced with causal forward filter built from public hmmlearn attributes only |
-| FIX-2 | HMM regime labels flip between retrains | High | Canonical ordering enforced post-fit: regime 0 = lower mean return |
-| FIX-3 | Next-day regime ignores sequence context | Medium | Replaced with `last_fwd_probs @ transmat_` |
-| FIX-4 | `forward_vol` covered one extra future day | Low-Medium | Corrected to cover exactly t+1..t+horizon |
-| FIX-5 | Last 90 rows stripped from training window unused | Medium | Removed; full window used |
-| FIX-6 | `get_data()` called twice | Negligible | Removed duplicate |
-| FIX-7 | No benchmark comparison | Practical | Added buy-and-hold and MA crossover to all tables |
-| FIX-8 | No overfitting diagnostic | Practical | Added % windows where train < val loss per regime |
-
----
 
 ## Requirements
 
